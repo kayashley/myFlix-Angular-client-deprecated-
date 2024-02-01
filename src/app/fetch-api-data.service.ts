@@ -31,7 +31,7 @@ export class UserRegistrationService {
   public userLogin(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'login?' + new URLSearchParams(userDetails), {})
-      .pipe(catchError.this.handleError);
+      .pipe(catchError(this.handleError));
   }
 
   // api calls for list of get all movies
@@ -151,7 +151,7 @@ export class UserRegistrationService {
   }
 
   // Non-typed response extraction
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
     return body || {};
   }
